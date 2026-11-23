@@ -1,0 +1,2 @@
+[phases.build]  echo cmds = ["php artisan config:cache", "php artisan route:cache"] 
+[phases.build]  echo cmds = ["php artisan config:cache", "php artisan route:cache"] 
