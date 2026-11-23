@@ -10,12 +10,14 @@ class ScholarshipController extends Controller
     /**
      * Display a listing of the resource.
      */
-   public function index()
-{
-    $campusScholarships = [];
+    public function index()
+    {
+        // Mengambil seluruh data beasiswa dari database
+        $campusScholarships = Scholarship::all();
 
-    return view('cari-beasiswa', compact('campusScholarships'));
-}
+        return view('cari-beasiswa', compact('campusScholarships'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
