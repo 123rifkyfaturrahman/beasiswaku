@@ -19,13 +19,13 @@ class SyncBeasiswaApiIndonesia extends Command
 
     public function handle(ApiIndonesiaService $api): int
     {
-        $this->info('Memulai sinkronisasi beasiswa...');
+        $this->info('Memulai sinkronisasi beasiswa secara massal...');
 
         try {
-            // Ambil seluruh halaman API
+            // Ambil halaman pertama dengan per_page 500 untuk menarik data lebih banyak sekaligus
             $firstResponse = $api->getScholarships([
                 'page' => 1,
-                'per_page' => 100,
+                'per_page' => 500,
             ]);
 
             if (!isset($firstResponse['data']) ||
@@ -36,12 +36,13 @@ class SyncBeasiswaApiIndonesia extends Command
             $allData = $firstResponse['data'];
             $totalPages = (int) ($firstResponse['meta']['total_pages'] ?? 1);
 
+            // Perulangan otomatis untuk mengambil seluruh halaman berikutnya (ratusan/ribuan data)
             for ($page = 2; $page <= $totalPages; $page++) {
-                $this->info("Mengambil halaman {$page}...");
+                $this->info("Mengambil halaman {$page} dari {$totalPages}...");
 
                 $response = $api->getScholarships([
                     'page' => $page,
-                    'per_page' => 100,
+                    'per_page' => 500,
                 ]);
 
                 if (!isset($response['data']) ||
@@ -54,26 +55,28 @@ class SyncBeasiswaApiIndonesia extends Command
                 $allData = array_merge($allData, $response['data']);
             }
 
+            $this->info('Total data berhasil ditarik dari API: ' . count($allData));
+
             $baru = 0;
             $diperbarui = 0;
             $dilewati = 0;
- if ($this->option('dry-run')) {
-    $this->info('MODE SIMULASI: database tidak akan diubah.');
 
-    $this->info('Jumlah data dari API: ' . count($allData));
+            if ($this->option('dry-run')) {
+                $this->info('MODE SIMULASI: database tidak akan diubah.');
+                $this->info('Jumlah data dari API: ' . count($allData));
 
-    $slugs = collect($allData)
-        ->pluck('slug')
-        ->filter();
+                $slugs = collect($allData)
+                    ->pluck('slug')
+                    ->filter();
 
-    $this->info(
-        'Jumlah slug unik: ' . $slugs->unique()->count()
-    );
+                $this->info(
+                    'Jumlah slug unik: ' . $slugs->unique()->count()
+                );
+                $this->info('Simulasi selesai. Tidak ada perubahan database.');
 
-    $this->info('Simulasi selesai. Tidak ada perubahan database.');
+                return self::SUCCESS;
+            }
 
-    return self::SUCCESS;
-}
             DB::transaction(function () use (
                 $allData,
                 &$baru,
@@ -188,32 +191,31 @@ class SyncBeasiswaApiIndonesia extends Command
                     }
 
                     // Tentukan status
-                   
-$statusPendaftaran = Str::lower(
-    (string) ($item['status_pendaftaran'] ?? '')
-);
+                    $statusPendaftaran = Str::lower(
+                        (string) ($item['status_pendaftaran'] ?? '')
+                    );
 
-$status = match ($statusPendaftaran) {
-    'dibuka' => 'active',
-    'segera_dibuka' => 'upcoming',
-    'belum_diumumkan' => 'unannounced',
-    'ditutup' => 'closed',
-    default => 'unannounced',
-};
+                    $status = match ($statusPendaftaran) {
+                        'dibuka' => 'active',
+                        'segera_dibuka' => 'upcoming',
+                        'belum_diumumkan' => 'unannounced',
+                        'ditutup' => 'closed',
+                        default => 'unannounced',
+                    };
 
-// Jika program tidak aktif, tandai sebagai ditutup.
-if (($item['aktif'] ?? true) !== true) {
-    $status = 'closed';
-}
+                    // Jika program tidak aktif, tandai sebagai ditutup.
+                    if (($item['aktif'] ?? true) !== true) {
+                        $status = 'closed';
+                    }
 
-// Jika tanggal pendaftaran sudah lewat, tandai sebagai ditutup.
-if (
-    $status === 'active' &&
-    $deadline &&
-    $deadline < today()->toDateString()
-) {
-    $status = 'closed';
-}
+                    // Jika tanggal pendaftaran sudah lewat, tandai sebagai ditutup.
+                    if (
+                        $status === 'active' &&
+                        $deadline &&
+                        $deadline < today()->toDateString()
+                    ) {
+                        $status = 'closed';
+                    }
 
                     // Susun deskripsi
                     $description = $item['ringkasan'] ?? '';
@@ -285,7 +287,7 @@ if (
             });
 
             $this->newLine();
-            $this->info('Sinkronisasi berhasil!');
+            $this->info('Sinkronisasi massal berhasil!');
             $this->info("Data baru: {$baru}");
             $this->info("Data diperbarui: {$diperbarui}");
             $this->info("Data dilewati: {$dilewati}");
