@@ -152,9 +152,7 @@
                     </a>
                     <button class="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" title="Notifikasi" type="button">
 
-                        
-                    <div class="flex items-center pl-space-xs">
-                        <nav id="mobile-menu" class="hidden border-t bg-white px-4 py-3 lg:hidden">
+                         <nav id="mobile-menu" class="hidden border-t bg-white px-4 py-3 lg:hidden">
         <div class="mx-auto flex max-w-7xl flex-col gap-1">
 
             <a href="{{ route('home') }}" class="rounded-lg px-3 py-2 font-semibold text-primary">
@@ -179,6 +177,8 @@
 
         </div>
     </nav>
+                    <div class="flex items-center pl-space-xs">
+                       
                         
                             
                             

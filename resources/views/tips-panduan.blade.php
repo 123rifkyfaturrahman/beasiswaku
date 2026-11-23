@@ -154,7 +154,31 @@
                 </button>
                 <div class="flex items-center pl-space-xs">
                     <a class="flex items-center gap-space-xs p-1 rounded-full hover:bg-surface-container-low transition-colors" data-path="kontak-tentang" href="{{ route('login') }}">
-                        
+                         <nav id="mobile-menu" class="hidden border-t bg-white px-4 py-3 lg:hidden">
+        <div class="mx-auto flex max-w-7xl flex-col gap-1">
+
+            <a href="{{ route('home') }}" class="rounded-lg px-3 py-2 font-semibold text-primary">
+                Beranda
+            </a>
+
+            <a href="{{ route('cari.beasiswa') }}" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
+                Cari Beasiswa
+            </a>
+
+            <a href="{{ route('bookmark') }}" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
+                Bookmark
+            </a>
+
+            <a href="{{ route('guides') }}" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
+                Tips &amp; Panduan
+            </a>
+
+            <a href="{{ route('contact') }}" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
+                Kontak
+            </a>
+
+        </div>
+    </nav>
                     </a>
                 </div>
             </div>
