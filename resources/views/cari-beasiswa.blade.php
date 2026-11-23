@@ -103,90 +103,161 @@
                     }
                 }
             }
+
+            // Dropdown Navbar Mobile
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+
+if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function () {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+
+        mobileMenuButton.setAttribute('aria-expanded', String(!isHidden));
+        mobileMenuButton.setAttribute(
+            'aria-label',
+            isHidden ? 'Buka menu' : 'Tutup menu'
+        );
+
+        if (mobileMenuIcon) {
+            mobileMenuIcon.textContent = isHidden ? 'menu' : 'close';
+        }
+    });
+}
         </script>
+
+        
     </head>
     <body class="bg-surface font-body-md text-on-surface antialiased">
-        <header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-            <div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between gap-gutter">
-                <div class="flex items-center gap-space-md">
-                    <img alt="CariBeasiswa Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDyYTXdMdxcKMwBBX4Dm47m265guyKMeLdM2duGN95k3bp8MfmUOSG40jK9NbSUV2w1tbGukD6Qzw53RCFEoEN5PKUqVjHe2NE5y8hVtL3-O5kloeqYXXBXHknt1N4HJW2v5GLLVnep1M_XO-NS9OYF7YigXrhrQ_JQDb1CS8qKbYsXjnyqSkFeGVqdvJ8vhTpHczLlIUQ33XnCRCCJvFblter7XHLy8yZtbpiskYM9_Q" onerror="this.onerror=null;this.src='https://placehold.co/32x32/00236f/ffffff?text=CB';"/>
-                    <a class="flex items-center" data-path="beranda" href="{{ route('home') }}">
-                        <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">CariBeasiswa</span>
-                        <span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed/50 px-space-xs py-0.5 rounded ml-space-xs">ID</span>
-                    </a>
-                </div>
-                <nav class="hidden items-center gap-1 lg:flex">
-           <!-- Menu Beranda -->
-<a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'bg-blue-100 text-blue-900 px-4 py-2 rounded-xl font-bold' : 'text-gray-600 hover:text-blue-900 px-4 py-2' }}">
-    Beranda
-</a>
+        
+<header class="fixed top-0 z-50 w-full bg-white/90 shadow-sm backdrop-blur-xl">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 md:px-8">
 
-<!-- Menu Cari Beasiswa -->
-<a href="{{ route('cari.beasiswa') }}" class="{{ request()->routeIs('cari.beasiswa*') ? 'bg-blue-100 text-blue-900 px-4 py-2 rounded-xl font-bold' : 'text-gray-600 hover:text-blue-900 px-4 py-2' }}">
-    Cari Beasiswa
-</a>
+        <!-- Logo -->
+        <a href="{{ route('home') }}" class="flex shrink-0 items-center gap-3">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-lg font-extrabold text-white">
+                CB
+            </span>
 
-<!-- Menu Bookmark -->
-<a href="{{ route('bookmark') }}" class="{{ request()->routeIs('bookmark*') ? 'bg-blue-100 text-blue-900 px-4 py-2 rounded-xl font-bold' : 'text-gray-600 hover:text-blue-900 px-4 py-2' }}">
-    Bookmark
-</a>
+            <span class="text-xl font-extrabold tracking-tight text-primary">
+                CariBeasiswa
+                <span class="rounded bg-secondary-fixed px-1.5 py-0.5 text-xs text-primary">ID</span>
+            </span>
+        </a>
 
-<!-- Menu Tips & Panduan -->
-<a href="{{ route('guides') }}" class="{{ request()->routeIs('guides*') ? 'bg-blue-100 text-blue-900 px-4 py-2 rounded-xl font-bold' : 'text-gray-600 hover:text-blue-900 px-4 py-2' }}">
-    Tips &amp; Panduan
-</a>
+        <!-- Navbar Desktop -->
+        <nav class="hidden items-center gap-1 lg:flex">
 
-<!-- Menu Kontak -->
-<a href="{{ route('contact') }}" class="{{ request()->routeIs('contact*') ? 'bg-blue-100 text-blue-900 px-4 py-2 rounded-xl font-bold' : 'text-gray-600 hover:text-blue-900 px-4 py-2' }}">
-    Kontak
-</a>
-        </nav>
-                <div class="flex items-center gap-space-md">
-                    <div class="relative hidden md:block w-56 lg:w-64">
-                        <input aria-label="Cari beasiswa" class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-lg pl-9 pr-space-md py-space-sm placeholder:text-on-surface-variant focus:outline-none focus:bg-surface-container-lowest transition-colors" id="header-search-input" placeholder="Cari beasiswa, jenjang..." type="search"/>
-                        <span class="material-symbols-outlined text-on-surface-variant text-base absolute left-space-sm top-1/2 -translate-y-1/2 pointer-events-none">search</span>
-                    </div>
-                    <a aria-label="Lihat beasiswa tersimpan" class="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" data-path="bookmark" href="{{ route('bookmark') }}" title="Simpanan Beasiswa">
-                        <span class="material-symbols-outlined">bookmark</span>
-                        <span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-secondary text-on-secondary font-label-sm text-[10px] flex items-center justify-center font-bold" id="bookmark-count">0</span>
-                    </a>
-                    <button class="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" title="Notifikasi" type="button">
-
-                         <nav id="mobile-menu" class="hidden border-t bg-white px-4 py-3 lg:hidden">
-        <div class="mx-auto flex max-w-7xl flex-col gap-1">
-
-            <a href="{{ route('home') }}" class="rounded-lg px-3 py-2 font-semibold text-primary">
+            <a href="{{ route('home') }}"
+               class="{{ request()->routeIs('home') ? 'rounded-lg bg-surface-container-high px-4 py-2 text-sm font-bold text-primary' : 'rounded-lg px-4 py-2 text-sm font-semibold text-on-surface-variant hover:bg-surface-container-low hover:text-primary' }}">
                 Beranda
             </a>
 
-            <a href="{{ route('cari.beasiswa') }}" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
+            <a href="{{ route('cari.beasiswa') }}"
+               class="{{ request()->routeIs('cari.beasiswa*') ? 'rounded-lg bg-surface-container-high px-4 py-2 text-sm font-bold text-primary' : 'rounded-lg px-4 py-2 text-sm font-semibold text-on-surface-variant hover:bg-surface-container-low hover:text-primary' }}">
                 Cari Beasiswa
             </a>
 
-            <a href="{{ route('bookmark') }}" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
+            <a href="{{ route('bookmark') }}"
+               class="{{ request()->routeIs('bookmark*') ? 'rounded-lg bg-surface-container-high px-4 py-2 text-sm font-bold text-primary' : 'rounded-lg px-4 py-2 text-sm font-semibold text-on-surface-variant hover:bg-surface-container-low hover:text-primary' }}">
                 Bookmark
             </a>
 
-            <a href="{{ route('guides') }}" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
+            <a href="{{ route('guides') }}"
+               class="{{ request()->routeIs('guides*') ? 'rounded-lg bg-surface-container-high px-4 py-2 text-sm font-bold text-primary' : 'rounded-lg px-4 py-2 text-sm font-semibold text-on-surface-variant hover:bg-surface-container-low hover:text-primary' }}">
                 Tips &amp; Panduan
             </a>
 
-            <a href="{{ route('contact') }}" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
+            <a href="{{ route('contact') }}"
+               class="{{ request()->routeIs('contact*') ? 'rounded-lg bg-surface-container-high px-4 py-2 text-sm font-bold text-primary' : 'rounded-lg px-4 py-2 text-sm font-semibold text-on-surface-variant hover:bg-surface-container-low hover:text-primary' }}">
+                Kontak
+            </a>
+
+        </nav>
+
+        <!-- Bagian Kanan -->
+        <div class="flex items-center gap-2">
+
+            <!-- Pencarian Desktop -->
+            <div class="relative hidden w-48 md:block lg:w-56">
+                <input
+                    aria-label="Cari beasiswa"
+                    id="header-search-input"
+                    type="search"
+                    placeholder="Cari beasiswa..."
+                    class="w-full rounded-lg bg-surface-container-low py-2 pl-9 pr-3 text-sm outline-none focus:bg-white focus:ring-2 focus:ring-primary/20"
+                >
+
+                <span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-lg text-on-surface-variant">
+                    search
+                </span>
+            </div>
+
+            <!-- Bookmark -->
+            <a href="{{ route('bookmark') }}"
+               title="Bookmark"
+               aria-label="Lihat beasiswa tersimpan"
+               class="relative rounded-lg p-2 text-on-surface-variant hover:bg-surface-container-low hover:text-primary">
+
+                <span class="material-symbols-outlined">bookmark</span>
+
+                <span id="bookmark-count"
+                      class="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-secondary px-1 text-[10px] font-bold text-white">
+                    0
+                </span>
+            </a>
+
+            <!-- Tombol Hamburger Mobile -->
+            <button
+                id="mobile-menu-button"
+                type="button"
+                aria-label="Buka menu"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+                class="rounded-lg p-2 text-primary hover:bg-surface-container-low lg:hidden">
+
+                <span id="mobile-menu-icon" class="material-symbols-outlined">
+                    menu
+                </span>
+            </button>
+
+        </div>
+    </div>
+
+    <!-- Dropdown Mobile -->
+    <nav id="mobile-menu" class="hidden border-t border-surface-container-high bg-white px-4 py-3 shadow-lg lg:hidden">
+
+        <div class="mx-auto flex max-w-7xl flex-col gap-1">
+
+            <a href="{{ route('home') }}"
+               class="rounded-lg px-3 py-3 font-semibold text-on-surface-variant hover:bg-surface-container-low hover:text-primary">
+                Beranda
+            </a>
+
+            <a href="{{ route('cari.beasiswa') }}"
+               class="rounded-lg bg-surface-container-low px-3 py-3 font-bold text-primary">
+                Cari Beasiswa
+            </a>
+
+            <a href="{{ route('bookmark') }}"
+               class="rounded-lg px-3 py-3 font-semibold text-on-surface-variant hover:bg-surface-container-low hover:text-primary">
+                Bookmark
+            </a>
+
+            <a href="{{ route('guides') }}"
+               class="rounded-lg px-3 py-3 font-semibold text-on-surface-variant hover:bg-surface-container-low hover:text-primary">
+                Tips &amp; Panduan
+            </a>
+
+            <a href="{{ route('contact') }}"
+               class="rounded-lg px-3 py-3 font-semibold text-on-surface-variant hover:bg-surface-container-low hover:text-primary">
                 Kontak
             </a>
 
         </div>
     </nav>
-                    <div class="flex items-center pl-space-xs">
-                       
-                        
-                            
-                            
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </header>
+</header>
+
 
         <main class="w-full pt-20 bg-surface min-h-screen">
             <div class="flex flex-col w-full">
