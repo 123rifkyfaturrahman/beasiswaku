@@ -1,573 +1,678 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <meta content="web_standard" name="shell-type"/>
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-    <style>
-        @layer base {
-            html, body { margin: 0; padding: 0; }
-            body { overscroll-behavior: none; }
-            main > :first-child { margin-top: 0 !important; }
-            main > :last-child { margin-bottom: 0 !important; }
-        }
-        ::-webkit-scrollbar { display: none; }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Daftar beasiswa yang Anda simpan di CariBeasiswa Indonesia.">
+    <title>Bookmark Beasiswa - CariBeasiswa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <script id="tailwind-config">
+    <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "on-primary-fixed": "#00164e",
-                        "on-secondary-fixed": "#00201d",
-                        "surface-container-highest": "#d5e3fc",
-                        "on-secondary-container": "#006f66",
-                        "on-tertiary-fixed": "#2a1700",
-                        "surface-bright": "#f8f9ff",
-                        "primary-fixed": "#dce1ff",
-                        "surface": "#f8f9ff",
-                        "on-background": "#0d1c2e",
-                        "on-primary": "#ffffff",
-                        "secondary-fixed-dim": "#6bd8cb",
-                        "primary-fixed-dim": "#b6c4ff",
-                        "on-tertiary-fixed-variant": "#653e00",
-                        "on-tertiary": "#ffffff",
-                        "on-surface": "#0d1c2e",
-                        "on-error": "#ffffff",
-                        "error-container": "#ffdad6",
-                        "outline-variant": "#c5c5d3",
-                        "inverse-surface": "#233144",
-                        "surface-dim": "#ccdbf3",
-                        "surface-container-high": "#dce9ff",
-                        "on-secondary": "#ffffff",
-                        "surface-variant": "#d5e3fc",
-                        "inverse-primary": "#b6c4ff",
-                        "surface-container-lowest": "#ffffff",
-                        "on-secondary-fixed-variant": "#005049",
-                        "on-primary-container": "#90a8ff",
-                        "error": "#ba1a1a",
-                        "surface-container": "#e6eeff",
-                        "secondary-fixed": "#89f5e7",
-                        "on-primary-fixed-variant": "#264191",
-                        "surface-container-low": "#eff4ff",
-                        "surface-tint": "#4059aa",
-                        "on-tertiary-container": "#ef9900",
-                        "secondary": "#006a61",
-                        "on-error-container": "#93000a",
-                        "tertiary": "#3e2400",
-                        "secondary-container": "#86f2e4",
-                        "primary": "#00236f",
-                        "tertiary-fixed-dim": "#ffb95f",
-                        "outline": "#757682",
-                        "tertiary-container": "#5c3800",
-                        "background": "#f8f9ff",
-                        "on-surface-variant": "#444651",
-                        "inverse-on-surface": "#eaf1ff",
-                        "tertiary-fixed": "#ffddb8",
-                        "primary-container": "#1e3a8a"
-                    },
-                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
-                    spacing: {
-                        "margin-mobile": "1rem", "margin": "2rem", "space-lg": "1.5rem", "space-md": "1rem",
-                        "gutter-mobile": "1rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "gutter": "1.5rem"
+                        primary: '#00236f',
+                        secondary: '#006a61',
+                        surface: '#f8f9ff',
+                        muted: '#64748b'
                     },
                     fontFamily: {
-                        "body-lg": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"],
-                        "body-sm": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"],
-                        "display-hero-mobile": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"],
-                        "label-lg": ["Plus Jakarta Sans"], "display-hero": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"],
-                        "body-md": ["Plus Jakarta Sans"]
-                    },
-                    fontSize: {
-                        "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
-                        "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
-                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
-                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
-                        "headline-xl-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "700" }],
-                        "headline-sm": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
-                        "display-hero-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "800" }],
-                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "700" }],
-                        "headline-md": ["22px", { "lineHeight": "30px", "fontWeight": "600" }],
-                        "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
-                        "display-hero": ["48px", { "lineHeight": "56px", "fontWeight": "800" }],
-                        "headline-xl": ["36px", { "lineHeight": "44px", "fontWeight": "700" }],
-                        "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }]
+                        jakarta: ['Plus Jakarta Sans', 'sans-serif']
                     }
                 }
             }
-        }
+        };
     </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .bookmark-card {
+            animation: appear .22s ease-out;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(7px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tab-active {
+            background: #00236f;
+            color: white;
+        }
+
+        .tab-active .tab-number {
+            background: #1e3a8a;
+            color: white;
+        }
+    </style>
 </head>
-<body class="bg-surface font-body-md text-on-surface antialiased">
-    <!-- Header Navigasi -->
-    <header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-        <div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between gap-gutter">
-            <div class="flex items-center gap-space-md">
-                <img alt="CariBeasiswa Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDyYTXdMdxcKMwBBX4Dm47m265guyKMeLdM2duGN95k3bp8MfmUOSG40jK9NbSUV2w1tbGukD6Qzw53RCFEoEN5PKUqVjHe2NE5y8hVtL3-O5kloeqYXXBXHknt1N4HJW2v5GLLVnep1M_XO-NS9OYF7YigXrhrQ_JQDb1CS8qKbYsXjnyqSkFeGVqdvJ8vhTpHczLlIUQ33XnCRCCJvFblter7XHLy8yZtbpiskYM9_Q" onerror="this.onerror=null;this.src='https://placehold.co/32x32/00236f/ffffff?text=CB';"/>
-                <a class="flex items-center" data-path="beranda" href="{{ route('home') }}">
-                    <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">CariBeasiswa</span>
-                    <span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed/50 px-space-xs py-0.5 rounded ml-space-xs">ID</span>
+
+<body class="bg-surface text-slate-800 antialiased">
+
+    <!-- NAVIGASI -->
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+
+            <a href="{{ route('home') }}" class="flex shrink-0 items-center gap-2">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white">
+                    <span class="material-symbols-outlined">school</span>
+                </span>
+
+                <span class="text-xl font-extrabold tracking-tight text-primary">
+                    CariBeasiswa<span class="ml-1 text-sm text-secondary">ID</span>
+                </span>
+            </a>
+
+            <nav class="hidden items-center gap-1 lg:flex">
+
+                <a href="{{ route('home') }}"
+                   class="rounded-xl px-4 py-2 text-sm font-semibold {{ request()->routeIs('home') ? 'bg-blue-50 text-primary' : 'text-slate-600 hover:bg-slate-50 hover:text-primary' }}">
+                    Beranda
                 </a>
-            </div>
-            <!-- Menu Beranda -->
-<a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'bg-blue-100 text-blue-900 px-4 py-2 rounded-xl font-bold' : 'text-gray-600 hover:text-blue-900 px-4 py-2' }}">
-    Beranda
-</a>
 
-<!-- Menu Cari Beasiswa -->
-<a href="{{ route('cari.beasiswa') }}" class="{{ request()->routeIs('cari.beasiswa*') ? 'bg-blue-100 text-blue-900 px-4 py-2 rounded-xl font-bold' : 'text-gray-600 hover:text-blue-900 px-4 py-2' }}">
-    Cari Beasiswa
-</a>
+                <a href="{{ route('cari.beasiswa') }}"
+                   class="rounded-xl px-4 py-2 text-sm font-semibold {{ request()->routeIs('cari.beasiswa*') ? 'bg-blue-50 text-primary' : 'text-slate-600 hover:bg-slate-50 hover:text-primary' }}">
+                    Cari Beasiswa
+                </a>
 
-<!-- Menu Bookmark -->
-<a href="{{ route('bookmark') }}" class="{{ request()->routeIs('bookmark*') ? 'bg-blue-100 text-blue-900 px-4 py-2 rounded-xl font-bold' : 'text-gray-600 hover:text-blue-900 px-4 py-2' }}">
-    Bookmark
-</a>
+                <a href="{{ route('bookmark') }}"
+                   class="rounded-xl bg-blue-50 px-4 py-2 text-sm font-bold text-primary">
+                    Bookmark
+                </a>
 
-<!-- Menu Tips & Panduan -->
-<a href="{{ route('guides') }}" class="{{ request()->routeIs('guides*') ? 'bg-blue-100 text-blue-900 px-4 py-2 rounded-xl font-bold' : 'text-gray-600 hover:text-blue-900 px-4 py-2' }}">
-    Tips &amp; Panduan
-</a>
+                <a href="{{ route('guides') }}"
+                   class="rounded-xl px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50 hover:text-primary">
+                    Tips &amp; Panduan
+                </a>
 
-<!-- Menu Kontak -->
-<a href="{{ route('contact') }}" class="{{ request()->routeIs('contact*') ? 'bg-blue-100 text-blue-900 px-4 py-2 rounded-xl font-bold' : 'text-gray-600 hover:text-blue-900 px-4 py-2' }}">
-    Kontak
-</a>
-            <div class="flex items-center gap-space-md">
-                <div class="relative hidden md:block w-56 lg:w-64">
-                    <input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-lg pl-9 pr-space-md py-space-sm placeholder:text-on-surface-variant focus:outline-none focus:bg-surface-container-lowest transition-colors" placeholder="Cari beasiswa, jenjang..." type="text"/>
-                    <span class="material-symbols-outlined text-on-surface-variant text-base absolute left-space-sm top-1/2 -translate-y-1/2 pointer-events-none">search</span>
-                </div>
-                <a class="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" data-path="bookmark" href="{{ route('bookmark') }}" title="Simpanan Beasiswa">
+                <a href="{{ route('contact') }}"
+                   class="rounded-xl px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50 hover:text-primary">
+                    Kontak
+                </a>
+
+            </nav>
+
+            <div class="flex items-center gap-2">
+
+                <a href="{{ route('bookmark') }}"
+                   aria-label="Daftar bookmark"
+                   class="relative rounded-xl p-2 text-primary hover:bg-slate-100">
+
                     <span class="material-symbols-outlined">bookmark</span>
-                    <span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-secondary text-on-secondary font-label-sm text-[10px] flex items-center justify-center font-bold" id="bookmark-header-count">0</span>
+
+                    <span id="bookmark-header-count"
+                          class="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-secondary px-1 text-[10px] font-bold text-white">
+                        0
+                    </span>
                 </a>
-                <button class="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" title="Notifikasi" type="button">
-                    
-                <div class="flex items-center pl-space-xs">
-                    <a class="flex items-center gap-space-xs p-1 rounded-full hover:bg-surface-container-low transition-colors" data-path="profil-pengguna" href="{{ route('login') }}">
-                         <nav id="mobile-menu" class="hidden border-t bg-white px-4 py-3 lg:hidden">
-        <div class="mx-auto flex max-w-7xl flex-col gap-1">
 
-            <a href="{{ route('home') }}" class="rounded-lg px-3 py-2 font-semibold text-primary">
-                Beranda
-            </a>
+                
+                <button id="mobile-menu-button"
+                        type="button"
+                        aria-label="Buka menu"
+                        aria-expanded="false"
+                        class="rounded-xl p-2 text-primary hover:bg-slate-100 lg:hidden">
 
-            <a href="{{ route('cari.beasiswa') }}" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
-                Cari Beasiswa
-            </a>
+                    <span id="mobile-menu-icon" class="material-symbols-outlined">
+                        menu
+                    </span>
+                </button>
 
-            <a href="{{ route('bookmark') }}" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
-                Bookmark
-            </a>
-
-            <a href="{{ route('guides') }}" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
-                Tips &amp; Panduan
-            </a>
-
-            <a href="{{ route('contact') }}" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
-                Kontak
-            </a>
-
-        </div>
-    </nav>
-                    </a>
-                </div>
             </div>
         </div>
+
+        <!-- MENU MOBILE -->
+        <nav id="mobile-menu" class="hidden border-t border-slate-100 bg-white px-4 py-3 lg:hidden">
+            <div class="mx-auto flex max-w-7xl flex-col gap-1">
+
+                <a href="{{ route('home') }}"
+                   class="rounded-lg px-3 py-2 font-semibold text-slate-700 hover:bg-slate-50">
+                    Beranda
+                </a>
+
+                <a href="{{ route('cari.beasiswa') }}"
+                   class="rounded-lg px-3 py-2 font-semibold text-slate-700 hover:bg-slate-50">
+                    Cari Beasiswa
+                </a>
+
+                <a href="{{ route('bookmark') }}"
+                   class="rounded-lg bg-blue-50 px-3 py-2 font-bold text-primary">
+                    Bookmark
+                </a>
+
+                <a href="{{ route('guides') }}"
+                   class="rounded-lg px-3 py-2 font-semibold text-slate-700 hover:bg-slate-50">
+                    Tips &amp; Panduan
+                </a>
+
+                <a href="{{ route('contact') }}"
+                   class="rounded-lg px-3 py-2 font-semibold text-slate-700 hover:bg-slate-50">
+                    Kontak
+                </a>
+
+            </div>
+        </nav>
     </header>
 
-    <!-- Konten Utama -->
-    <main class="w-full pt-20 bg-surface min-h-screen">
-        <div class="flex flex-col w-full"> 
-            <div class="w-full bg-gradient-to-b from-surface-container-low to-surface py-space-xl">
-                <div class="max-w-7xl mx-auto px-margin">
-                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-lg">
+
+    <!-- KONTEN UTAMA -->
+    <main class="min-h-screen pt-20">
+
+        <!-- HERO DAN RINGKASAN -->
+        <section class="bg-gradient-to-b from-blue-50 to-surface py-10 sm:py-14">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+                <div class="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+
+                    <div>
+
+                        <div class="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.16em] text-secondary">
+                            <span class="material-symbols-outlined text-lg">bookmark_check</span>
+                            Bookmark pribadi
+                        </div>
+
+                        <h1 class="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+                            Beasiswa Tersimpan Saya
+                        </h1>
+
+                        <p class="mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
+                            Semua program beasiswa yang Anda simpan dari Beranda atau halaman Cari Beasiswa akan muncul di sini.
+                        </p>
+
+                    </div>
+
+                    <a href="{{ route('cari.beasiswa') }}"
+                       class="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-blue-900">
+
+                        <span class="material-symbols-outlined text-lg">explore</span>
+                        Jelajahi Beasiswa
+
+                    </a>
+
+                </div>
+
+
+                <!-- STATISTIK -->
+                <div class="grid gap-4 sm:grid-cols-3">
+
+                    <div class="flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
+
+                        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-primary">
+                            <span class="material-symbols-outlined text-2xl">bookmarks</span>
+                        </div>
+
                         <div>
-                            <div class="flex items-center gap-space-xs text-secondary font-label-md text-label-md mb-space-xs uppercase tracking-wider">
-                                <span class="material-symbols-outlined text-base">bookmark_check</span>
-                                <span>Bookmark Pribadi</span>
-                            </div>
-                            <h1 class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight">Beasiswa Tersimpan Saya</h1>
-                            <p class="font-body-lg text-body-lg text-on-surface-variant mt-space-xs max-w-2xl">
-                                Kelola program yang Anda simpan dari Beranda maupun Cari Beasiswa. Data bookmark tersimpan di browser ini.
+                            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">
+                                Total tersimpan
+                            </p>
+
+                            <p id="stat-total" class="mt-1 text-2xl font-extrabold text-primary">
+                                0
                             </p>
                         </div>
-                        <a class="inline-flex items-center justify-center gap-space-xs bg-primary text-on-primary hover:bg-primary-container font-label-lg text-label-lg px-space-md py-space-sm rounded-lg shadow-sm transition-all group shrink-0" data-path="cari-beasiswa" href="{{ route('cari.beasiswa') }}">
-                            <span class="material-symbols-outlined text-lg transition-transform group-hover:-translate-x-0.5">explore</span>
-                            <span>Jelajahi Beasiswa Lainnya</span>
+
+                    </div>
+
+
+                    <div class="flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
+
+                        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
+                            <span class="material-symbols-outlined text-2xl">event</span>
+                        </div>
+
+                        <div>
+                            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">
+                                Memiliki jadwal
+                            </p>
+
+                            <p id="stat-deadline" class="mt-1 text-2xl font-extrabold text-amber-600">
+                                0
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
+
+                        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50 text-secondary">
+                            <span class="material-symbols-outlined text-2xl">auto_stories</span>
+                        </div>
+
+                        <div>
+                            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">
+                                Dari katalog
+                            </p>
+
+                            <p id="stat-campus" class="mt-1 text-2xl font-extrabold text-secondary">
+                                0
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- DAFTAR BOOKMARK -->
+        <section class="mx-auto grid max-w-7xl gap-6 px-4 py-8 sm:px-6 lg:grid-cols-12 lg:px-8">
+
+            <div class="space-y-5 lg:col-span-8">
+
+                <!-- TAB DAN PENGURUTAN -->
+                <div class="flex flex-col justify-between gap-3 rounded-2xl border border-slate-100 bg-white p-3 shadow-sm sm:flex-row sm:items-center">
+
+                    <div class="flex flex-wrap gap-2">
+
+                        <button type="button"
+                                class="tab-btn tab-active inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-bold transition"
+                                data-category="all">
+
+                            Semua
+
+                            <span id="tab-count-all"
+                                  class="tab-number rounded-full bg-blue-900 px-2 py-0.5 text-xs">
+                                0
+                            </span>
+
+                        </button>
+
+
+                        <button type="button"
+                                class="tab-btn inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50"
+                                data-category="kampus">
+
+                            Dari Katalog
+
+                            <span id="tab-count-kampus"
+                                  class="tab-number rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-600">
+                                0
+                            </span>
+
+                        </button>
+
+
+                        <button type="button"
+                                class="tab-btn inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50"
+                                data-category="beranda">
+
+                            Pilihan Beranda
+
+                            <span id="tab-count-beranda"
+                                  class="tab-number rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-600">
+                                0
+                            </span>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- PENGURUTAN -->
+                    <label class="flex items-center gap-2 px-2 text-xs font-semibold text-slate-500">
+
+                        <span class="material-symbols-outlined text-base">sort</span>
+
+                        <span>Urutkan</span>
+
+                        <select id="bookmark-sort"
+                                class="max-w-40 rounded-lg border-0 bg-slate-50 py-2 text-xs font-bold text-slate-700 focus:ring-2 focus:ring-blue-200">
+
+                            <option value="newest">Baru disimpan</option>
+                            <option value="deadline">Deadline terdekat</option>
+                            <option value="name">Nama beasiswa</option>
+
+                        </select>
+
+                    </label>
+
+                </div>
+
+
+                <!-- DAFTAR CARD DIISI JAVASCRIPT -->
+                <div id="bookmark-list" class="space-y-4"></div>
+
+
+                <!-- EMPTY STATE -->
+                <div id="empty-state"
+                     class="hidden rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-14 text-center">
+
+                    <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 text-primary">
+                        <span class="material-symbols-outlined text-3xl">bookmark_remove</span>
+                    </div>
+
+                    <h2 id="empty-title" class="mt-4 text-lg font-extrabold text-primary">
+                        Belum ada beasiswa tersimpan
+                    </h2>
+
+                    <p id="empty-message" class="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-500">
+                        Simpan beasiswa yang menarik dari halaman Beranda atau Cari Beasiswa agar mudah ditemukan kembali.
+                    </p>
+
+                    <a href="{{ route('cari.beasiswa') }}"
+                       class="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-white hover:bg-blue-900">
+
+                        <span class="material-symbols-outlined text-lg">search</span>
+                        Cari Beasiswa
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SIDEBAR -->
+            <aside class="space-y-5 lg:col-span-4">
+
+                <!-- TIPS -->
+                <div class="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
+
+                    <div class="flex items-center gap-2">
+
+                        <span class="material-symbols-outlined text-2xl text-secondary">
+                            checklist
+                        </span>
+
+                        <h2 class="text-base font-extrabold text-primary">
+                            Tips Mengelola Bookmark
+                        </h2>
+
+                    </div>
+
+                    <p class="mt-2 text-sm leading-6 text-slate-600">
+                        Gunakan daftar ini untuk memantau peluang beasiswa yang ingin Anda ikuti.
+                    </p>
+
+                    <ul class="mt-4 space-y-3 text-sm text-slate-600">
+
+                        <li class="flex gap-3">
+                            <span class="material-symbols-outlined text-lg text-secondary">check_circle</span>
+                            <span>Periksa kembali persyaratan setiap program.</span>
+                        </li>
+
+                        <li class="flex gap-3">
+                            <span class="material-symbols-outlined text-lg text-secondary">check_circle</span>
+                            <span>Catat tanggal pembukaan dan batas pendaftaran.</span>
+                        </li>
+
+                        <li class="flex gap-3">
+                            <span class="material-symbols-outlined text-lg text-secondary">check_circle</span>
+                            <span>Gunakan tautan resmi untuk memastikan informasi terbaru.</span>
+                        </li>
+
+                    </ul>
+
+                    <a href="{{ route('guides') }}"
+                       class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold text-primary hover:bg-blue-50">
+
+                        <span class="material-symbols-outlined text-lg">menu_book</span>
+                        Baca Tips &amp; Panduan
+
+                    </a>
+
+                </div>
+
+
+                <!-- SMART REMINDER -->
+                <div class="relative overflow-hidden rounded-2xl bg-primary p-6 text-white shadow-sm">
+
+                    <div class="relative z-10">
+
+                        <span class="rounded-lg bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-blue-100">
+                            Pengingat
+                        </span>
+
+                        <h2 class="mt-4 text-xl font-extrabold">
+                            Jangan Lewatkan Jadwal Pendaftaran
+                        </h2>
+
+                        <p class="mt-2 text-sm leading-6 text-blue-100">
+                            Jadwal dan persyaratan dapat berubah. Selalu periksa informasi terbaru melalui situs resmi penyelenggara.
+                        </p>
+
+                        <a href="{{ route('cari.beasiswa') }}"
+                           class="mt-5 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-bold text-primary hover:bg-blue-50">
+
+                            Lihat Beasiswa
+
+                            <span class="material-symbols-outlined text-base">arrow_forward</span>
+
                         </a>
+
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
-                        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center gap-space-md relative overflow-hidden">
-                            <div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary shrink-0">
-                                <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">bookmarks</span>
-                            </div>
-                            <div>
-                                <div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wide">Total Tersimpan</div>
-                                <div class="font-headline-lg text-headline-lg text-primary font-bold leading-none mt-1" id="stat-total">0</div>
-                                <div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Tersimpan di browser ini</div>
-                            </div>
-                            <div class="absolute -right-3 -bottom-3 text-surface-container-high/40 pointer-events-none">
-                                <span class="material-symbols-outlined text-7xl">bookmark</span>
-                            </div>
-                        </div>
-                        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center gap-space-md relative overflow-hidden">
-                            <div class="w-12 h-12 rounded-lg bg-error-container flex items-center justify-center text-error shrink-0">
-                                <span class="material-symbols-outlined text-2xl">timer</span>
-                            </div>
-                            <div>
-                                <div class="font-label-sm text-label-sm text-error uppercase tracking-wide font-bold">Jadwal Tercantum</div>
-                                <div class="font-headline-lg text-headline-lg text-error font-bold leading-none mt-1" id="stat-deadline">0</div>
-                                <div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Cek jadwal terbaru di portal resmi</div>
-                            </div>
-                            <div class="absolute -right-3 -bottom-3 text-error-container/40 pointer-events-none">
-                                <span class="material-symbols-outlined text-7xl">hourglass_top</span>
-                            </div>
-                        </div>
-                        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center gap-space-md relative overflow-hidden">
-                            <div class="w-12 h-12 rounded-lg bg-secondary-fixed/50 flex items-center justify-center text-secondary shrink-0">
-                                <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">verified</span>
-                            </div>
-                            <div>
-                                <div class="font-label-sm text-label-sm text-secondary uppercase tracking-wide font-bold">Dari Katalog</div>
-                                <div class="font-headline-lg text-headline-lg text-on-surface font-bold leading-none mt-1" id="stat-campus">0</div>
-                                <div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Disimpan dari katalog beasiswa</div>
-                            </div>
-                            <div class="absolute -right-3 -bottom-3 text-secondary-fixed/20 pointer-events-none">
-                                <span class="material-symbols-outlined text-7xl">payments</span>
-                            </div>
-                        </div>
-                    </div>
+
+                    <span class="material-symbols-outlined absolute -bottom-7 -right-5 text-[130px] text-white/10">
+                        event_available
+                    </span>
+
                 </div>
-            </div>
-            
-            <div class="max-w-7xl mx-auto px-margin py-space-lg w-full">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
-                    <div class="lg:col-span-8 flex flex-col gap-space-md">
-                        <div class="bg-surface-container-lowest p-1.5 rounded-xl shadow-sm flex flex-wrap items-center justify-between gap-space-sm">
-                            <div class="flex items-center gap-1 overflow-x-auto">
-                                <button class="tab-btn px-space-md py-space-xs rounded-lg font-label-lg text-label-lg bg-primary text-on-primary shadow-xs transition-colors flex items-center gap-space-xs" onclick="filterTab('all', this)" type="button">
-                                    <span>Semua</span>
-                                    <span class="bg-primary-container text-on-primary text-label-sm font-bold px-1.5 py-0.5 rounded-full" id="tab-count-all">0</span>
-                                </button>
-                                <button class="tab-btn px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-space-xs" onclick="filterTab('kampus', this)" type="button">
-                                    <span>Dari Katalog</span>
-                                    <span class="bg-surface-container text-on-surface-variant text-label-sm font-bold px-1.5 py-0.5 rounded-full" id="tab-count-kampus">0</span>
-                                </button>
-                                <button class="tab-btn px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-space-xs" onclick="filterTab('beranda', this)" type="button">
-                                    <span>Pilihan Beranda</span>
-                                    <span class="bg-error-container text-error text-label-sm font-bold px-1.5 py-0.5 rounded-full" id="tab-count-beranda">0</span>
-                                </button>
-                            </div>
-                            <div class="flex items-center gap-space-xs pr-space-xs text-on-surface-variant font-body-sm text-body-sm">
-                                <span class="material-symbols-outlined text-base">sort</span>
-                                <span class="hidden sm:inline">Urutkan:</span>
-                                <select class="bg-transparent font-label-sm text-label-sm text-on-surface font-semibold focus:outline-none cursor-pointer">
-                                    <option>Deadline Terdekat</option>
-                                    <option>Baru Disimpan</option>
-                                    <option>Nama Beasiswa</option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <div class="flex flex-col gap-space-md" id="bookmark-list"></div>
 
-                        <!-- Card 3: Djarum Beasiswa Plus -->
-                        <div class="bookmark-item hidden bg-surface-container-lowest p-space-md sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all relative flex flex-col gap-space-md" data-bookmark-placeholder data-category="urgent" id="bookmark-card-3">
-                            <div class="flex items-start justify-between gap-space-md">
-                                <div class="flex items-start gap-space-md min-w-0">
-                                    <div class="w-14 h-14 rounded-xl bg-surface-container-high flex items-center justify-center text-primary font-bold text-headline-sm shrink-0 overflow-hidden shadow-xs">
-                                        <span class="material-symbols-outlined text-3xl text-secondary">school</span>
-                                    </div>
-                                    <div class="min-w-0">
-                                        <div class="flex flex-wrap items-center gap-space-xs mb-1">
-                                            <span class="bg-error-container text-error font-label-sm text-label-sm px-2 py-0.5 rounded-full flex items-center gap-1 font-bold animate-pulse">
-                                                <span class="material-symbols-outlined text-xs">alarm</span>
-                                                Deadline Segera (6 Hari Lagi)
-                                            </span>
-                                            <span class="bg-surface-container text-primary font-label-sm text-label-sm px-2 py-0.5 rounded-full">S1 (Semester 4)</span>
-                                            <span class="bg-secondary-fixed/50 text-secondary font-label-sm text-label-sm px-2 py-0.5 rounded-full">Partial + Pelatihan Soft Skills</span>
-                                        </div>
-                                        <h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate">Djarum Beasiswa Plus 2025</h3>
-                                        <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Djarum Foundation • Dalam Negeri (Nasional)</p>
-                                    </div>
-                                </div>
-                                <button class="p-space-xs rounded-lg text-outline hover:text-error hover:bg-error-container/40 transition-colors shrink-0" onclick="removeBookmark('bookmark-card-3')" title="Hapus dari Bookmark" type="button">
-                                    <span class="material-symbols-outlined text-xl">delete</span>
-                                </button>
-                            </div>
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm p-space-sm bg-surface-container-low rounded-lg">
-                                <div>
-                                    <span class="font-label-sm text-label-sm text-on-surface-variant block">Batas Akhir</span>
-                                    <span class="font-label-md text-label-md text-error font-bold">28 Mei 2025</span>
-                                </div>
-                                <div>
-                                    <span class="font-label-sm text-label-sm text-on-surface-variant block">Minimal IPK</span>
-                                    <span class="font-label-md text-label-md text-on-surface font-semibold">3.00 (Skala 4.00)</span>
-                                </div>
-                                <div>
-                                    <span class="font-label-sm text-label-sm text-on-surface-variant block">Status Portofolio</span>
-                                    <span class="font-label-md text-label-md text-on-surface font-semibold">Wajib CV Prestasi</span>
-                                </div>
-                                <div>
-                                    <span class="font-label-sm text-label-sm text-on-surface-variant block">Kuota Tersedia</span>
-                                    <span class="font-label-md text-label-md text-secondary font-bold">500+ Mahasiswa</span>
-                                </div>
-                            </div>
-                            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm pt-space-xs">
-                                <div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm">
-                                    <span class="material-symbols-outlined text-base text-error">notification_important</span>
-                                    <span>Lengkapi tes daring &amp; berkas sebelum sistem ditutup</span>
-                                </div>
-                                <div class="flex items-center gap-space-xs">
-                                    <a class="w-full sm:w-auto inline-flex items-center justify-center gap-space-xs bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg px-space-md py-space-sm rounded-lg transition-all shadow-xs group" data-path="cari-beasiswa" href="{{ route('cari.beasiswa') }}">
-                                        <span>Lihat Detail Beasiswa</span>
-                                        <span class="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">arrow_forward</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                <!-- PENYIMPANAN -->
+                <div class="flex items-start gap-3 rounded-2xl border border-teal-100 bg-teal-50 p-4">
 
-                        <!-- Card 1: LPDP Beasiswa Reguler -->
-                        <div class="bookmark-item hidden bg-surface-container-lowest p-space-md sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all relative flex flex-col gap-space-md" data-bookmark-placeholder data-category="active" id="bookmark-card-1">
-                            <div class="flex items-start justify-between gap-space-md">
-                                <div class="flex items-start gap-space-md min-w-0">
-                                    <div class="w-14 h-14 rounded-xl bg-surface-container-high flex items-center justify-center text-primary font-bold text-headline-sm shrink-0 overflow-hidden shadow-xs">
-                                        <span class="material-symbols-outlined text-3xl text-primary">account_balance</span>
-                                    </div>
-                                    <div class="min-w-0">
-                                        <div class="flex flex-wrap items-center gap-space-xs mb-1">
-                                            <span class="bg-secondary-fixed/50 text-secondary font-label-sm text-label-sm px-2 py-0.5 rounded-full font-bold">Fully Funded</span>
-                                            <span class="bg-surface-container text-primary font-label-sm text-label-sm px-2 py-0.5 rounded-full">S2 / S3</span>
-                                            <span class="bg-surface-container text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded-full">Dalam &amp; Luar Negeri</span>
-                                        </div>
-                                        <h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate">LPDP Beasiswa Reguler 2025</h3>
-                                        <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Kementerian Keuangan RI • Terverifikasi Resmi</p>
-                                    </div>
-                                </div>
-                                <button class="p-space-xs rounded-lg text-outline hover:text-error hover:bg-error-container/40 transition-colors shrink-0" onclick="removeBookmark('bookmark-card-1')" title="Hapus dari Bookmark" type="button">
-                                    <span class="material-symbols-outlined text-xl">delete</span>
-                                </button>
-                            </div>
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm p-space-sm bg-surface-container-low rounded-lg">
-                                <div>
-                                    <span class="font-label-sm text-label-sm text-on-surface-variant block">Batas Akhir</span>
-                                    <span class="font-label-md text-label-md text-primary font-bold">15 Juli 2025</span>
-                                </div>
-                                <div>
-                                    <span class="font-label-sm text-label-sm text-on-surface-variant block">Sisa Waktu</span>
-                                    <span class="font-label-md text-label-md text-secondary font-bold">45 Hari Lagi</span>
-                                </div>
-                                <div>
-                                    <span class="font-label-sm text-label-sm text-on-surface-variant block">Persyaratan Bahasa</span>
-                                    <span class="font-label-md text-label-md text-on-surface font-semibold">IELTS 6.5 / TOEFL 500</span>
-                                </div>
-                                <div>
-                                    <span class="font-label-sm text-label-sm text-on-surface-variant block">Dokumen Wajib</span>
-                                    <span class="font-label-md text-label-md text-on-surface font-semibold">Esai &amp; LoA (Opsional)</span>
-                                </div>
-                            </div>
-                            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm pt-space-xs">
-                                <div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm">
-                                    <span class="material-symbols-outlined text-base text-secondary">check_circle</span>
-                                    <span>Pendaftaran tahap daring sedang berlangsung</span>
-                                </div>
-                                <div class="flex items-center gap-space-xs">
-                                    <a class="w-full sm:w-auto inline-flex items-center justify-center gap-space-xs bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg px-space-md py-space-sm rounded-lg transition-all shadow-xs group" data-path="cari-beasiswa" href="{{ route('cari.beasiswa') }}">
-                                        <span>Lihat Detail Beasiswa</span>
-                                        <span class="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">arrow_forward</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                    <span class="material-symbols-outlined text-2xl text-secondary">
+                        devices
+                    </span>
 
-                        <!-- Card 2: Chevening Scholarship UK -->
-                        <div class="bookmark-item hidden bg-surface-container-lowest p-space-md sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all relative flex flex-col gap-space-md" data-bookmark-placeholder data-category="active" id="bookmark-card-2">
-                            <div class="flex items-start justify-between gap-space-md">
-                                <div class="flex items-start gap-space-md min-w-0">
-                                    <div class="w-14 h-14 rounded-xl bg-surface-container-high flex items-center justify-center text-primary font-bold text-headline-sm shrink-0 overflow-hidden shadow-xs">
-                                        <span class="material-symbols-outlined text-3xl text-primary">public</span>
-                                    </div>
-                                    <div class="min-w-0">
-                                        <div class="flex flex-wrap items-center gap-space-xs mb-1">
-                                            <span class="bg-secondary-fixed/50 text-secondary font-label-sm text-label-sm px-2 py-0.5 rounded-full font-bold">Fully Funded</span>
-                                            <span class="bg-surface-container text-primary font-label-sm text-label-sm px-2 py-0.5 rounded-full">S2 Master Degree</span>
-                                            <span class="bg-surface-container text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded-full">United Kingdom (UK)</span>
-                                        </div>
-                                        <h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate">Chevening Scholarship UK 2025/2026</h3>
-                                        <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Foreign, Commonwealth &amp; Development Office (FCDO)</p>
-                                    </div>
-                                </div>
-                                <button class="p-space-xs rounded-lg text-outline hover:text-error hover:bg-error-container/40 transition-colors shrink-0" onclick="removeBookmark('bookmark-card-2')" title="Hapus dari Bookmark" type="button">
-                                    <span class="material-symbols-outlined text-xl">delete</span>
-                                </button>
-                            </div>
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm p-space-sm bg-surface-container-low rounded-lg">
-                                <div>
-                                    <span class="font-label-sm text-label-sm text-on-surface-variant block">Batas Akhir</span>
-                                    <span class="font-label-md text-label-md text-primary font-bold">5 November 2025</span>
-                                </div>
-                                <div>
-                                    <span class="font-label-sm text-label-sm text-on-surface-variant block">Sisa Waktu</span>
-                                    <span class="font-label-md text-label-md text-on-surface font-semibold">158 Hari Lagi</span>
-                                </div>
-                                <div>
-                                    <span class="font-label-sm text-label-sm text-on-surface-variant block">Pengalaman Kerja</span>
-                                    <span class="font-label-md text-label-md text-on-surface font-semibold">Min. 2 Tahun (2.800 Jam)</span>
-                                </div>
-                                <div>
-                                    <span class="font-label-sm text-label-sm text-on-surface-variant block">Cakupan</span>
-                                    <span class="font-label-md text-label-md text-secondary font-bold">Tuition + Living + Tiket</span>
-                                </div>
-                            </div>
-                            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm pt-space-xs">
-                                <div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm">
-                                    <span class="material-symbols-outlined text-base text-secondary">info</span>
-                                    <span>Persiapkan 4 esai wajib sebelum portal dibuka</span>
-                                </div>
-                                <div class="flex items-center gap-space-xs">
-                                    <a class="w-full sm:w-auto inline-flex items-center justify-center gap-space-xs bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg px-space-md py-space-sm rounded-lg transition-all shadow-xs group" data-path="cari-beasiswa" href="{{ route('cari.beasiswa') }}">
-                                        <span>Lihat Detail Beasiswa</span>
-                                        <span class="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">arrow_forward</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                    <div>
+                        <p class="text-sm font-bold text-slate-800">
+                            Penyimpanan browser
+                        </p>
 
-                        <!-- Empty State (Hidden by default) -->
-                        <div class="hidden bg-surface-container-lowest p-space-xl rounded-xl shadow-sm text-center flex-col items-center justify-center gap-space-sm" id="empty-state">
-                            <div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant mb-space-xs">
-                                <span class="material-symbols-outlined text-3xl">bookmark_remove</span>
-                            </div>
-                            <h4 class="font-headline-sm text-headline-sm text-primary font-bold">Tidak ada beasiswa di kategori ini</h4>
-                            <p class="font-body-md text-body-md text-on-surface-variant max-w-md">Anda belum memiliki beasiswa tersimpan untuk kriteria filter ini atau telah menghapus bookmark.</p>
-                            <a class="mt-space-xs inline-flex items-center gap-space-xs bg-primary text-on-primary font-label-lg text-label-lg px-space-md py-space-sm rounded-lg" data-path="cari-beasiswa" href="{{ route('cari.beasiswa') }}">
-                                <span class="material-symbols-outlined text-base">search</span>
-                                <span>Cari Beasiswa Baru</span>
-                            </a>
-                        </div>
+                        <p class="mt-1 text-xs leading-5 text-slate-600">
+                            Bookmark disimpan pada browser dan perangkat ini. Data tidak otomatis berpindah ke perangkat lain.
+                        </p>
                     </div>
 
-                    <!-- Sidebar Kanan -->
-                    <div class="lg:col-span-4 flex flex-col gap-space-md sticky top-24">
-                        <div class="bg-surface-container-lowest p-space-md sm:p-space-lg rounded-xl shadow-sm">
-                            <div class="flex items-center gap-space-xs mb-space-sm text-primary font-bold font-headline-sm text-headline-sm">
-                                <span class="material-symbols-outlined text-secondary">checklist</span>
-                                <h3>Panduan Kesiapan Berkas</h3>
-                            </div>
-                            <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
-                                Pantau progres dokumen krusial untuk program beasiswa yang Anda simpan.
-                            </p>
-                            <div class="space-y-space-sm">
-                                <div class="p-space-sm bg-surface-container-low rounded-lg">
-                                    <div class="flex items-center justify-between font-label-md text-label-md mb-1.5">
-                                        <span class="text-primary font-bold">Motivation Letter / Esai</span>
-                                        <span class="text-secondary font-bold">65% Siap</span>
-                                    </div>
-                                    <div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-                                        <div class="bg-secondary h-full rounded-full transition-all duration-500" style="width: 65%;"></div>
-                                    </div>
-                                    <span class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 block">Sesuaikan esai dengan persyaratan program yang Anda pilih</span>
-                                </div>
-                                <div class="p-space-sm bg-surface-container-low rounded-lg">
-                                    <div class="flex items-center justify-between font-label-md text-label-md mb-1.5">
-                                        <span class="text-primary font-bold">Sertifikat Bahasa (IELTS / TOEFL)</span>
-                                        <span class="text-primary font-bold">100% Siap</span>
-                                    </div>
-                                    <div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-                                        <div class="bg-primary h-full rounded-full" style="width: 100%;"></div>
-                                    </div>
-                                    <span class="font-body-sm text-body-sm text-secondary mt-1.5 block font-semibold flex items-center gap-1">
-                                        <span class="material-symbols-outlined text-sm">check</span> Skor IELTS 7.0 Terverifikasi
-                                    </span>
-                                </div>
-                                <div class="p-space-sm bg-surface-container-low rounded-lg">
-                                    <div class="flex items-center justify-between font-label-md text-label-md mb-1.5">
-                                        <span class="text-primary font-bold">Surat Rekomendasi Akademik</span>
-                                        <span class="text-error font-bold">Perlu Tindakan</span>
-                                    </div>
-                                    <div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-                                        <div class="bg-error h-full rounded-full" style="width: 30%;"></div>
-                                    </div>
-                                    <span class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 block">1 dari 2 rekomendasi dosen telah didapat</span>
-                                </div>
-                            </div>
-                            <a class="mt-space-md w-full inline-flex items-center justify-center gap-space-xs bg-surface-container-high hover:bg-surface-container-highest text-primary font-label-lg text-label-lg py-space-sm rounded-lg transition-colors" data-path="tips-&amp;-panduan" href="{{ route('guides') }}">
-                                <span class="material-symbols-outlined text-base">menu_book</span>
-                                <span>Baca Tips &amp; Trik Berkas</span>
-                            </a>
-                        </div>
-
-                        <!-- Smart Reminder -->
-                        <div class="bg-primary text-on-primary p-space-md sm:p-space-lg rounded-xl shadow-sm relative overflow-hidden">
-                            <div class="relative z-10">
-                                <span class="font-label-sm text-label-sm bg-primary-container text-on-primary-container px-2 py-0.5 rounded font-bold uppercase tracking-wider">
-                                    Smart Reminder
-                                </span>
-                                <h4 class="font-headline-sm text-headline-sm font-bold mt-space-xs text-on-primary">
-                                    Periksa Kembali Jadwal Beasiswa
-                                </h4>
-                                <p class="font-body-sm text-body-sm text-primary-fixed mt-1">
-                                    Jadwal dan persyaratan dapat berubah. Pastikan Anda memeriksa informasi terbaru di portal resmi masing-masing program.
-                                </p>
-                                <div class="mt-space-md flex items-center gap-space-xs">
-                                    <a class="bg-surface-container-lowest text-primary hover:bg-surface-bright font-label-md text-label-md font-bold px-space-md py-space-xs rounded-lg transition-colors inline-flex items-center gap-1" data-path="cari-beasiswa" href="{{ route('cari.beasiswa') }}">
-                                        <span>Periksa Syarat Sekarang</span>
-                                        <span class="material-symbols-outlined text-sm">open_in_new</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="absolute -right-6 -bottom-6 text-primary-container/40 pointer-events-none">
-                                <span class="material-symbols-outlined text-9xl">alarm_on</span>
-                            </div>
-                        </div>
-
-                        <!-- Penyimpanan Bookmark -->
-                        <div class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between gap-space-sm">
-                            <div class="flex items-center gap-space-xs">
-                                <span class="material-symbols-outlined text-secondary text-2xl">sync</span>
-                                <div>
-                                    <div class="font-label-md text-label-md text-on-surface font-bold">Penyimpanan Lokal Aktif</div>
-                                    <div class="font-body-sm text-body-sm text-on-surface-variant">Data tersimpan di browser pada perangkat ini</div>
-                                </div>
-                            </div>
-                            <span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed/50 px-2 py-0.5 rounded font-semibold">Lokal</span>
-                        </div>
-                    </div>
                 </div>
-            </div>
 
-            <!-- Toast Notification -->
-            <div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="toast-notification">
-                <div class="bg-inverse-surface text-inverse-on-surface px-space-md py-space-sm rounded-lg shadow-xl flex items-center gap-space-sm">
-                    <span class="material-symbols-outlined text-secondary-fixed-dim text-lg">check_circle</span>
-                    <span class="font-body-md text-body-md" id="toast-text">Beasiswa berhasil dihapus dari bookmark.</span>
-                </div>
-            </div>
-        </div>
+            </aside>
+
+        </section>
+
     </main>
 
-    <!-- JavaScript Interaksi -->
-    <script>
-        const bookmarkStorageKey = 'caribeasiswa:bookmarks:v1';
-        const bookmarkDetailsStorageKey = 'caribeasiswa:bookmark-details:v1';
-        const scholarshipDetailRoute = @json(route('scholarships.show', ['id' => '__SCHOLARSHIP_ID__']));
-        const bookmarkList = document.getElementById('bookmark-list');
-        const emptyState = document.getElementById('empty-state');
-        let activeBookmarkCategory = 'all';
 
-        function scholarshipDetailUrl(record) {
-            const path = scholarshipDetailRoute.replace('__SCHOLARSHIP_ID__', encodeURIComponent(record.id));
-            const url = new URL(path, window.location.origin);
-            const fields = {
+    <!-- NOTIFIKASI -->
+    <div id="toast-notification"
+         role="status"
+         aria-live="polite"
+         class="pointer-events-none fixed bottom-5 right-5 z-[60] translate-y-5 rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white opacity-0 shadow-xl transition-all">
+
+        <span id="toast-text">
+            Bookmark diperbarui.
+        </span>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-100 bg-white py-8">
+
+        <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 text-center text-xs text-slate-500 sm:px-6 md:flex-row md:items-center md:justify-between md:text-left lg:px-8">
+
+            <p>
+                © {{ date('Y') }} CariBeasiswa Indonesia. Informasi beasiswa perlu diperiksa kembali melalui portal resmi.
+            </p>
+
+            <div class="flex justify-center gap-5">
+
+                <a href="{{ route('guides') }}" class="hover:text-primary">
+                    Panduan
+                </a>
+
+                <a href="{{ route('contact') }}" class="hover:text-primary">
+                    Kontak
+                </a>
+
+                <a href="{{ route('cari.beasiswa') }}" class="hover:text-primary">
+                    Cari Beasiswa
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT BOOKMARK -->
+    <script>
+    (() => {
+
+        'use strict';
+
+        // Kunci penyimpanan harus sama dengan halaman Beranda dan Cari Beasiswa.
+        const BOOKMARK_KEY = 'caribeasiswa:bookmarks:v1';
+        const DETAILS_KEY = 'caribeasiswa:bookmark-details:v1';
+
+        const detailRouteTemplate = @json(route('scholarships.show', ['id' => '__SCHOLARSHIP_ID__']));
+
+        const list = document.getElementById('bookmark-list');
+        const emptyState = document.getElementById('empty-state');
+        const sortSelect = document.getElementById('bookmark-sort');
+
+        let activeCategory = 'all';
+        let toastTimer = null;
+
+
+        // MEMBACA DATA DENGAN AMAN
+        function safeRead(key, fallback) {
+
+            try {
+
+                const raw = localStorage.getItem(key);
+
+                return raw === null ? fallback : JSON.parse(raw);
+
+            } catch (error) {
+
+                console.warn('Data bookmark tidak dapat dibaca:', error);
+
+                return fallback;
+
+            }
+
+        }
+
+
+        // MENGAMBIL ID BOOKMARK
+        function getBookmarkIds() {
+
+            const value = safeRead(BOOKMARK_KEY, []);
+
+            if (!Array.isArray(value)) {
+                return [];
+            }
+
+            return [...new Set(value.map(String))];
+
+        }
+
+
+        // MENGAMBIL DETAIL BOOKMARK
+        function getBookmarkDetails() {
+
+            const value = safeRead(DETAILS_KEY, {});
+
+            return value && typeof value === 'object' && !Array.isArray(value)
+                ? value
+                : {};
+
+        }
+
+
+        // MENGGABUNGKAN ID DAN DETAIL
+        function getRecords() {
+
+            const ids = getBookmarkIds();
+            const details = getBookmarkDetails();
+
+            return ids.map((id, index) => {
+
+                const saved = details[id] && typeof details[id] === 'object'
+                    ? details[id]
+                    : {};
+
+                return {
+
+                    ...saved,
+
+                    id,
+
+                    title: saved.title || saved.name || id,
+
+                    provider: saved.provider || saved.institution || 'Penyelenggara tidak dicantumkan',
+
+                    level: saved.level || saved.education_level || saved.educationLevel || 'Tidak dicantumkan',
+
+                    funding: saved.funding || saved.funding_type || saved.fundingType || 'Informasi pendanaan belum tersedia',
+
+                    location: saved.location || 'Tidak dicantumkan',
+
+                    deadline: saved.deadline || '',
+
+                    status: saved.status || 'Periksa informasi terbaru pada situs resmi.',
+
+                    url: saved.url || saved.source_url || saved.official_url || '',
+
+                    icon: saved.icon || 'school',
+
+                    category: String(saved.category || saved.source || 'kampus').toLowerCase() === 'beranda'
+                        ? 'beranda'
+                        : 'kampus',
+
+                    savedAt: Number(saved.savedAt || saved.saved_at || index)
+
+                };
+
+            });
+
+        }
+
+
+        // MEMBUAT URL DETAIL
+        function detailUrl(record) {
+
+            const url = new URL(
+                detailRouteTemplate.replace(
+                    '__SCHOLARSHIP_ID__',
+                    encodeURIComponent(record.id)
+                ),
+                window.location.origin
+            );
+
+            const params = {
+
                 title: record.title,
                 provider: record.provider,
                 level: record.level,
@@ -576,300 +681,612 @@
                 deadline: record.deadline,
                 status: record.status,
                 url: record.url,
-                icon: record.icon,
-                program_type: record.programType,
                 description: record.description,
-                category: record.category,
+                category: record.category
+
             };
 
-            Object.entries(fields).forEach(([key, value]) => {
-                if (value) {
-                    url.searchParams.set(key, value);
+            Object.entries(params).forEach(([key, value]) => {
+
+                if (
+                    value !== undefined &&
+                    value !== null &&
+                    String(value).trim() !== ''
+                ) {
+
+                    url.searchParams.set(key, String(value));
+
                 }
+
             });
 
             return url.toString();
+
         }
 
-        function createTextElement(tagName, className, text) {
-            const element = document.createElement(tagName);
-            element.className = className;
-            element.textContent = text || '-';
-            return element;
-        }
 
-        function showToast(message) {
-            const toast = document.getElementById('toast-notification');
-            const toastText = document.getElementById('toast-text');
-            if (!toast || !toastText) {
-                return;
+        // MEMBUAT ELEMEN HTML
+        function el(tag, className, text) {
+
+            const node = document.createElement(tag);
+
+            if (className) {
+                node.className = className;
             }
 
-            toastText.textContent = message;
-            toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
-            toast.classList.add('translate-y-0', 'opacity-100');
-            setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
-            }, 3000);
-        }
-
-        function readBookmarkIds() {
-            const storedIds = localStorage.getItem(bookmarkStorageKey);
-            const bookmarkIds = storedIds === null ? [] : JSON.parse(storedIds);
-            if (!Array.isArray(bookmarkIds)) {
-                throw new TypeError('Data bookmark harus berupa daftar ID.');
+            if (text !== undefined && text !== null) {
+                node.textContent = String(text);
             }
 
-            return Array.from(new Set(bookmarkIds.filter((bookmarkId) => typeof bookmarkId === 'string')));
+            return node;
+
         }
 
-        function readBookmarkDetails() {
-            const storedDetails = localStorage.getItem(bookmarkDetailsStorageKey);
-            const bookmarkDetails = storedDetails === null ? {} : JSON.parse(storedDetails);
-            if (bookmarkDetails === null || Array.isArray(bookmarkDetails) || typeof bookmarkDetails !== 'object') {
-                throw new TypeError('Detail bookmark harus berupa objek.');
+
+        // FORMAT TANGGAL
+        function formatDeadline(value) {
+
+            if (!value) {
+                return 'Belum dicantumkan';
             }
 
-            return bookmarkDetails;
+            const date = new Date(value);
+
+            if (Number.isNaN(date.getTime())) {
+                return String(value);
+            }
+
+            return new Intl.DateTimeFormat('id-ID', {
+
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+
+            }).format(date);
+
         }
 
-        function renderBookmarkCard(record) {
-            const category = record.category === 'beranda' ? 'beranda' : 'kampus';
-            const card = document.createElement('article');
-            card.className = 'bookmark-item bg-surface-container-lowest p-space-md sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all relative flex flex-col gap-space-md';
-            card.dataset.category = category;
-            card.dataset.scholarshipId = record.id;
 
-            const header = document.createElement('div');
-            header.className = 'flex items-start justify-between gap-space-md';
-            const identity = document.createElement('div');
-            identity.className = 'flex items-start gap-space-md min-w-0';
-            const icon = createTextElement('span', 'text-primary font-bold text-headline-sm', record.icon || 'bookmark');
-            const iconContainer = document.createElement('div');
-            iconContainer.className = 'w-14 h-14 rounded-xl bg-surface-container-high flex items-center justify-center shrink-0 overflow-hidden shadow-xs';
-            iconContainer.appendChild(icon);
+        // MEMBUAT CARD BOOKMARK
+        function createCard(record) {
 
-            const description = document.createElement('div');
-            description.className = 'min-w-0';
-            const badges = document.createElement('div');
-            badges.className = 'flex flex-wrap items-center gap-space-xs mb-1';
-            badges.appendChild(createTextElement(
-                'span',
-                'bg-surface-container text-primary font-label-sm text-label-sm px-2 py-0.5 rounded-full',
-                category === 'beranda' ? 'Pilihan Beranda' : (record.programType || 'Dari Katalog')
-            ));
-            badges.appendChild(createTextElement(
-                'span',
-                'bg-surface-container text-primary font-label-sm text-label-sm px-2 py-0.5 rounded-full',
-                record.level
-            ));
-            badges.appendChild(createTextElement(
-                'span',
-                'bg-secondary-fixed/50 text-secondary font-label-sm text-label-sm px-2 py-0.5 rounded-full',
-                record.funding
-            ));
-            description.appendChild(badges);
-            description.appendChild(createTextElement(
-                'h3',
-                'font-headline-sm text-headline-sm text-primary font-bold',
-                record.title || record.id
-            ));
-            description.appendChild(createTextElement(
-                'p',
-                'font-body-sm text-body-sm text-on-surface-variant mt-0.5',
-                record.provider || 'Penyelenggara tidak tersedia'
-            ));
-            identity.append(iconContainer, description);
+            const card = el(
+                'article',
+                'bookmark-card rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition hover:shadow-md sm:p-6'
+            );
 
-            const removeButton = document.createElement('button');
-            removeButton.className = 'p-space-xs rounded-lg text-outline hover:text-error hover:bg-error-container/40 transition-colors shrink-0';
-            removeButton.type = 'button';
-            removeButton.title = 'Hapus dari Bookmark';
-            removeButton.setAttribute('aria-label', `Hapus ${record.title || record.id} dari Bookmark`);
-            removeButton.appendChild(createTextElement('span', 'material-symbols-outlined text-xl', 'delete'));
-            removeButton.addEventListener('click', () => removeBookmark(record.id));
-            header.append(identity, removeButton);
+            card.dataset.category = record.category;
+            card.dataset.id = record.id;
 
-            const details = document.createElement('div');
-            details.className = 'grid grid-cols-2 sm:grid-cols-4 gap-space-sm p-space-sm bg-surface-container-low rounded-lg';
+
+            // HEADER CARD
+            const top = el(
+                'div',
+                'flex items-start justify-between gap-4'
+            );
+
+            const identity = el(
+                'div',
+                'flex min-w-0 items-start gap-4'
+            );
+
+            const iconBox = el(
+                'div',
+                'flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-primary'
+            );
+
+            iconBox.appendChild(
+                el(
+                    'span',
+                    'material-symbols-outlined text-2xl',
+                    record.icon
+                )
+            );
+
+
+            const textBox = el(
+                'div',
+                'min-w-0 flex-1'
+            );
+
+            const badges = el(
+                'div',
+                'mb-2 flex flex-wrap gap-2'
+            );
+
+            badges.appendChild(
+                el(
+                    'span',
+                    'rounded-full bg-blue-50 px-2.5 py-1 text-[11px] font-bold text-primary',
+                    record.category === 'beranda' ? 'Pilihan Beranda' : 'Dari Katalog'
+                )
+            );
+
+            badges.appendChild(
+                el(
+                    'span',
+                    'rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-600',
+                    record.level
+                )
+            );
+
+            badges.appendChild(
+                el(
+                    'span',
+                    'rounded-full bg-teal-50 px-2.5 py-1 text-[11px] font-semibold text-secondary',
+                    record.funding
+                )
+            );
+
+
+            textBox.append(
+
+                badges,
+
+                el(
+                    'h2',
+                    'break-words text-base font-extrabold leading-6 text-primary sm:text-lg',
+                    record.title
+                ),
+
+                el(
+                    'p',
+                    'mt-1 text-xs text-slate-500',
+                    record.provider
+                )
+
+            );
+
+            identity.append(iconBox, textBox);
+
+
+            // TOMBOL HAPUS
+            const remove = el(
+                'button',
+                'flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-slate-400 transition hover:bg-red-50 hover:text-red-600'
+            );
+
+            remove.type = 'button';
+            remove.title = 'Hapus dari bookmark';
+
+            remove.setAttribute(
+                'aria-label',
+                'Hapus ' + record.title + ' dari bookmark'
+            );
+
+            remove.appendChild(
+                el(
+                    'span',
+                    'material-symbols-outlined',
+                    'delete'
+                )
+            );
+
+            remove.addEventListener('click', () => {
+                removeBookmark(record.id);
+            });
+
+            top.append(identity, remove);
+
+
+            // INFORMASI BEASISWA
+            const info = el(
+                'div',
+                'mt-5 grid grid-cols-2 gap-3 rounded-xl bg-slate-50 p-4 sm:grid-cols-4'
+            );
+
             [
+
                 ['Jenjang', record.level],
                 ['Pendanaan', record.funding],
                 ['Lokasi', record.location],
-                ['Jadwal', record.deadline],
+                ['Batas akhir', formatDeadline(record.deadline)]
+
             ].forEach(([label, value]) => {
-                const cell = document.createElement('div');
-                cell.appendChild(createTextElement('span', 'font-label-sm text-label-sm text-on-surface-variant block', label));
-                cell.appendChild(createTextElement('span', 'font-label-md text-label-md text-on-surface font-semibold', value));
-                details.appendChild(cell);
-            });
 
-            const footer = document.createElement('div');
-            footer.className = 'flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm pt-space-xs';
-            footer.appendChild(createTextElement(
-                'p',
-                'font-body-sm text-body-sm text-on-surface-variant',
-                record.status || 'Periksa informasi terbaru di portal resmi.'
-            ));
-
-            const detailLink = createTextElement(
-                    'a',
-                    'w-full sm:w-auto inline-flex items-center justify-center gap-space-xs bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg px-space-md py-space-sm rounded-lg transition-all shadow-xs',
-                    'Lihat Detail'
+                const cell = el(
+                    'div',
+                    'min-w-0'
                 );
-            detailLink.href = scholarshipDetailUrl(record);
-            detailLink.appendChild(createTextElement('span', 'material-symbols-outlined text-base', 'arrow_forward'));
-            footer.appendChild(detailLink);
 
-            card.append(header, details, footer);
+                cell.append(
+
+                    el(
+                        'p',
+                        'text-[11px] font-semibold text-slate-400',
+                        label
+                    ),
+
+                    el(
+                        'p',
+                        'mt-1 break-words text-xs font-bold leading-5 text-slate-700',
+                        value || 'Tidak dicantumkan'
+                    )
+
+                );
+
+                info.appendChild(cell);
+
+            });
+
+
+            // FOOTER CARD
+            const bottom = el(
+                'div',
+                'mt-5 flex flex-col gap-3 border-t border-slate-100 pt-4 sm:flex-row sm:items-center sm:justify-between'
+            );
+
+            bottom.appendChild(
+                el(
+                    'p',
+                    'text-xs leading-5 text-slate-500',
+                    record.status
+                )
+            );
+
+
+            const actions = el(
+                'div',
+                'flex flex-col gap-2 sm:flex-row'
+            );
+
+
+            
+
+
+            // LINK DETAIL
+            const detail = el(
+                'a',
+                'inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-xs font-bold text-white hover:bg-blue-900',
+                'Lihat Detail'
+            );
+
+            detail.href = detailUrl(record);
+
+            detail.appendChild(
+                el(
+                    'span',
+                    'material-symbols-outlined text-base',
+                    'arrow_forward'
+                )
+            );
+
+            actions.appendChild(detail);
+
+            bottom.appendChild(actions);
+
+            card.append(top, info, bottom);
+
             return card;
+
         }
 
-        function updateBookmarkSummary(records) {
-            const campusCount = records.filter((record) => record.category !== 'beranda').length;
-            const berandaCount = records.length - campusCount;
-            const deadlineCount = records.filter((record) => Boolean(record.deadline)).length;
+
+        // MEMPERBARUI STATISTIK
+        function updateSummary(records) {
+
+            const campus = records.filter(
+                record => record.category !== 'beranda'
+            ).length;
+
+            const home = records.length - campus;
+
+            const deadlines = records.filter(
+                record => Boolean(record.deadline)
+            ).length;
+
+
             document.getElementById('stat-total').textContent = records.length;
-            document.getElementById('stat-deadline').textContent = deadlineCount;
-            document.getElementById('stat-campus').textContent = campusCount;
+
+            document.getElementById('stat-deadline').textContent = deadlines;
+
+            document.getElementById('stat-campus').textContent = campus;
+
             document.getElementById('bookmark-header-count').textContent = records.length;
+
             document.getElementById('tab-count-all').textContent = records.length;
-            document.getElementById('tab-count-kampus').textContent = campusCount;
-            document.getElementById('tab-count-beranda').textContent = berandaCount;
+
+            document.getElementById('tab-count-kampus').textContent = campus;
+
+            document.getElementById('tab-count-beranda').textContent = home;
+
         }
 
-        function renderBookmarkCollection() {
-            const bookmarkIds = readBookmarkIds();
-            const bookmarkDetails = readBookmarkDetails();
-            const records = bookmarkIds.map((bookmarkId) => {
-                const details = bookmarkDetails[bookmarkId];
-                return details && typeof details === 'object'
-                    ? { ...details, id: bookmarkId }
-                    : {
-                        id: bookmarkId,
-                        title: bookmarkId,
-                        provider: 'Informasi detail tidak tersedia',
-                        level: '',
-                        funding: '',
-                        location: '',
-                        deadline: '',
-                        status: '',
-                        url: '',
-                        icon: 'bookmark',
-                        category: 'kampus',
-                    };
-            });
 
-            document.querySelectorAll('[data-bookmark-placeholder]').forEach((placeholder) => placeholder.remove());
-            bookmarkList.replaceChildren(...records.map(renderBookmarkCard));
-            updateBookmarkSummary(records);
-            filterTab(activeBookmarkCategory, document.querySelector('.tab-btn.bg-primary'));
-        }
+        // MENGURUTKAN DATA
+        function sortRecords(records) {
 
-        function filterTab(category, btnElement) {
-            activeBookmarkCategory = category;
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach((button) => {
-                button.classList.remove('bg-primary', 'text-on-primary', 'shadow-xs');
-                button.classList.add('text-on-surface-variant');
-            });
+            const sorted = [...records];
 
-            const activeButton = btnElement || document.querySelector(`.tab-btn[onclick*="'${category}'"]`);
-            if (activeButton) {
-                activeButton.classList.add('bg-primary', 'text-on-primary', 'shadow-xs');
-                activeButton.classList.remove('text-on-surface-variant');
-            }
+            if (sortSelect.value === 'name') {
 
-            const items = document.querySelectorAll('#bookmark-list .bookmark-item');
-            let visibleCount = 0;
-            items.forEach((item) => {
-                const isVisible = category === 'all' || item.dataset.category === category;
-                item.style.display = isVisible ? 'flex' : 'none';
-                if (isVisible) {
-                    visibleCount++;
-                }
-            });
+                sorted.sort((a, b) =>
+                    a.title.localeCompare(b.title, 'id')
+                );
 
-            if (visibleCount === 0) {
-                emptyState.classList.remove('hidden');
-                emptyState.classList.add('flex');
-                const message = emptyState.querySelector('p');
-                message.textContent = items.length === 0
-                    ? 'Simpan beasiswa dari Beranda atau Cari Beasiswa untuk menampilkannya di sini.'
-                    : 'Belum ada beasiswa tersimpan dalam kategori ini.';
+            } else if (sortSelect.value === 'deadline') {
+
+                sorted.sort((a, b) => {
+
+                    const da = a.deadline
+                        ? new Date(a.deadline).getTime()
+                        : Infinity;
+
+                    const db = b.deadline
+                        ? new Date(b.deadline).getTime()
+                        : Infinity;
+
+                    return da - db;
+
+                });
+
             } else {
-                emptyState.classList.add('hidden');
-                emptyState.classList.remove('flex');
+
+                sorted.sort((a, b) => b.savedAt - a.savedAt);
+
             }
+
+            return sorted;
+
         }
 
-        function removeBookmark(scholarshipId) {
-            const bookmarkIds = readBookmarkIds().filter((bookmarkId) => bookmarkId !== scholarshipId);
-            const bookmarkDetails = readBookmarkDetails();
-            delete bookmarkDetails[scholarshipId];
-            localStorage.setItem(bookmarkStorageKey, JSON.stringify(bookmarkIds));
-            localStorage.setItem(bookmarkDetailsStorageKey, JSON.stringify(bookmarkDetails));
-            renderBookmarkCollection();
-            showToast('Beasiswa berhasil dihapus dari daftar simpanan.');
+
+        // MEMPERBARUI TAMPILAN TAB
+        function updateTabs() {
+
+            document.querySelectorAll('.tab-btn').forEach(button => {
+
+                const active = button.dataset.category === activeCategory;
+
+                button.classList.toggle('tab-active', active);
+
+                button.classList.toggle('text-slate-600', !active);
+
+                button.classList.toggle('font-bold', active);
+
+                button.classList.toggle('font-semibold', !active);
+
+            });
+
         }
 
-        window.addEventListener('storage', (event) => {
-            if (event.key === bookmarkStorageKey || event.key === bookmarkDetailsStorageKey) {
-                renderBookmarkCollection();
+
+        // MENAMPILKAN BOOKMARK
+        function render() {
+
+            const records = getRecords();
+
+            updateSummary(records);
+
+            updateTabs();
+
+
+            const filtered = sortRecords(records).filter(record => {
+
+                return activeCategory === 'all' ||
+                       record.category === activeCategory;
+
+            });
+
+
+            list.replaceChildren(
+                ...filtered.map(createCard)
+            );
+
+
+            const noBookmarks = records.length === 0;
+
+            const noCategoryResults = !noBookmarks && filtered.length === 0;
+
+
+            emptyState.classList.toggle(
+                'hidden',
+                filtered.length > 0
+            );
+
+
+            document.getElementById('empty-title').textContent =
+                noBookmarks
+                    ? 'Belum ada beasiswa tersimpan'
+                    : 'Tidak ada beasiswa di kategori ini';
+
+
+            document.getElementById('empty-message').textContent =
+                noBookmarks
+                    ? 'Simpan beasiswa yang menarik dari halaman Beranda atau Cari Beasiswa agar mudah ditemukan kembali.'
+                    : 'Belum ada beasiswa tersimpan dalam kategori yang dipilih. Coba pilih tab Semua.';
+
+
+            if (noCategoryResults) {
+
+                const link = emptyState.querySelector('a');
+
+                link.classList.add('hidden');
+
+            } else {
+
+                emptyState.querySelector('a').classList.remove('hidden');
+
             }
+
+        }
+
+
+        // MENGHAPUS BOOKMARK
+        function removeBookmark(id) {
+
+            const ids = getBookmarkIds().filter(
+                bookmarkId => bookmarkId !== String(id)
+            );
+
+            const details = getBookmarkDetails();
+
+            delete details[id];
+
+
+            try {
+
+                localStorage.setItem(
+                    BOOKMARK_KEY,
+                    JSON.stringify(ids)
+                );
+
+                localStorage.setItem(
+                    DETAILS_KEY,
+                    JSON.stringify(details)
+                );
+
+            } catch (error) {
+
+                console.error(
+                    'Tidak dapat memperbarui bookmark:',
+                    error
+                );
+
+                showToast(
+                    'Bookmark tidak dapat diperbarui. Periksa pengaturan penyimpanan browser.'
+                );
+
+                return;
+
+            }
+
+
+            render();
+
+            showToast(
+                'Beasiswa berhasil dihapus dari bookmark.'
+            );
+
+        }
+
+
+        // NOTIFIKASI
+        function showToast(message) {
+
+            const toast = document.getElementById('toast-notification');
+
+            document.getElementById('toast-text').textContent = message;
+
+            toast.classList.remove(
+                'translate-y-5',
+                'opacity-0'
+            );
+
+            toast.classList.add(
+                'translate-y-0',
+                'opacity-100'
+            );
+
+
+            clearTimeout(toastTimer);
+
+            toastTimer = setTimeout(() => {
+
+                toast.classList.add(
+                    'translate-y-5',
+                    'opacity-0'
+                );
+
+                toast.classList.remove(
+                    'translate-y-0',
+                    'opacity-100'
+                );
+
+            }, 2600);
+
+        }
+
+
+        // EVENT TAB FILTER
+        document.querySelectorAll('.tab-btn').forEach(button => {
+
+            button.addEventListener('click', () => {
+
+                activeCategory = button.dataset.category;
+
+                render();
+
+            });
+
         });
 
-        renderBookmarkCollection();
+
+        // EVENT PENGURUTAN
+        sortSelect.addEventListener('change', render);
+
+
+        // MEMPERBARUI DATA JIKA BERUBAH DI TAB LAIN
+        window.addEventListener('storage', event => {
+
+            if (
+                event.key === BOOKMARK_KEY ||
+                event.key === DETAILS_KEY ||
+                event.key === null
+            ) {
+
+                render();
+
+            }
+
+        });
+
+
+        // MENU MOBILE
+        const menuButton = document.getElementById('mobile-menu-button');
+
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        const menuIcon = document.getElementById('mobile-menu-icon');
+
+
+        menuButton.addEventListener('click', () => {
+
+            const open = mobileMenu.classList.toggle('hidden') === false;
+
+            menuButton.setAttribute(
+                'aria-expanded',
+                String(open)
+            );
+
+            menuButton.setAttribute(
+                'aria-label',
+                open ? 'Tutup menu' : 'Buka menu'
+            );
+
+            menuIcon.textContent = open ? 'close' : 'menu';
+
+        });
+
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+
+            link.addEventListener('click', () => {
+
+                mobileMenu.classList.add('hidden');
+
+                menuButton.setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+
+                menuButton.setAttribute(
+                    'aria-label',
+                    'Buka menu'
+                );
+
+                menuIcon.textContent = 'menu';
+
+            });
+
+        });
+
+
+        // TAMPILKAN DATA SAAT HALAMAN DIBUKA
+        render();
+
+    })();
     </script>
 
-    <!-- Footer -->
-    <footer class="w-full bg-surface-container-low text-on-surface-variant pt-space-xl pb-space-lg">
-        <div class="max-w-7xl mx-auto px-margin">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-lg mb-space-xl">
-                <div class="lg:col-span-2 flex flex-col gap-space-sm">
-                    <div class="flex items-center gap-space-xs mb-space-xs">
-                        <img alt="CariBeasiswa Brand Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDyYTXdMdxcKMwBBX4Dm47m265guyKMeLdM2duGN95k3bp8MfmUOSG40jK9NbSUV2w1tbGukD6Qzw53RCFEoEN5PKUqVjHe2NE5y8hVtL3-O5kloeqYXXBXHknt1N4HJW2v5GLLVnep1M_XO-NS9OYF7YigXrhrQ_JQDb1CS8qKbYsXjnyqSkFeGVqdvJ8vhTpHczLlIUQ33XnCRCCJvFblter7XHLy8yZtbpiskYM9_Q" onerror="this.onerror=null;this.src='https://placehold.co/28x28/00236f/ffffff?text=CB';"/>
-                        <span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">CariBeasiswa</span>
-                    </div>
-                    <p class="font-body-md text-body-md text-on-surface-variant max-w-sm">Pusat kurasi informasi beasiswa terpadu untuk pelajar dan mahasiswa Indonesia dalam meraih peluang studi terbaik di dalam negeri maupun luar negeri.</p>
-                    <div class="flex items-center gap-space-sm mt-space-sm">
-                        <span class="font-label-md text-label-md text-secondary bg-surface-container-high px-space-sm py-1 rounded-full">Terverifikasi Resmi</span>
-                        <span class="font-label-md text-label-md text-on-surface-variant bg-surface-container-highest px-space-sm py-1 rounded-full">Kemendikbudristek &amp; LPDP Sync</span>
-                    </div>
-                </div>
-                <div class="flex flex-col gap-space-xs">
-                    <div class="font-label-lg text-label-lg text-on-surface font-bold mb-space-xs">Eksplorasi Beasiswa</div>
-                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" data-path="cari-beasiswa" href="{{ route('cari.beasiswa') }}">Semua Beasiswa</a>
-                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" data-path="cari-beasiswa" href="{{ route('cari.beasiswa') }}">Beasiswa S1 Sarjana</a>
-                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" data-path="cari-beasiswa" href="{{ route('cari.beasiswa') }}">Beasiswa S2 &amp; S3 Magister/Doktor</a>
-                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" data-path="cari-beasiswa" href="{{ route('cari.beasiswa') }}">Fully Funded Programs</a>
-                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" data-path="bookmark" href="{{ route('bookmark') }}">Daftar Disimpan</a>
-                </div>
-                <div class="flex flex-col gap-space-xs">
-                    <div class="font-label-lg text-label-lg text-on-surface font-bold mb-space-xs">Persiapan &amp; Panduan</div>
-                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" data-path="tips-&amp;-panduan" href="{{ route('guides') }}">Panduan Motivation Letter</a>
-                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" data-path="tips-&amp;-panduan" href="{{ route('guides') }}">Simulasi Tes IELTS / TOEFL</a>
-                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" data-path="tips-&amp;-panduan" href="{{ route('guides') }}">Wawancara Beasiswa</a>
-                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" data-path="tips-&amp;-panduan" href="{{ route('guides') }}">Kalender Pendaftaran</a>
-                </div>
-                <div class="flex flex-col gap-space-xs">
-                    <div class="font-label-lg text-label-lg text-on-surface font-bold mb-space-xs">Bantuan &amp; Mitra</div>
-                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" data-path="kontak-&amp;-tentang" href="{{ route('contact') }}">Kontak</a>
-                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" data-path="kontak-&amp;-tentang" href="{{ route('contact') }}">Helpdesk &amp; Pengaduan</a>
-                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" data-path="kontak-&amp;-tentang" href="{{ route('contact') }}">Live Chat Admin</a>
-                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" data-path="kontak-&amp;-tentang" href="{{ route('contact') }}">Kemitraan Institusi</a>
-                </div>
-            </div>
-            <div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-on-surface-variant border-t border-surface-container-high">
-                <p>© 2025 CariBeasiswa Indonesia. Hak cipta dilindungi undang-undang.</p>
-                <div class="flex items-center gap-space-md">
-                    <span class="hover:text-primary transition-colors cursor-pointer">Kebijakan Privasi</span>
-                    <span class="hover:text-primary transition-colors cursor-pointer">Syarat &amp; Ketentuan</span>
-                    <span class="hover:text-primary transition-colors cursor-pointer">Portal Resmi Pemerintah</span>
-                </div>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
